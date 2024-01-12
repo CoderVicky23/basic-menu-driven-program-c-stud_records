@@ -64,3 +64,6 @@ int structure_values_display(struct STUDENT_RECORD students[], int nos) {
     }
     return 0;
 }
+
+// function to fetch values from file to structure;
+// int fetchValues()

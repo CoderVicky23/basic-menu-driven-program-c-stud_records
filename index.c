@@ -4,7 +4,10 @@
 #include<time.h>
 
 #include "structure.h"
+#include "update.h"
 #include "utility.h"
+
+#define MAX_SIZE 100
 
 int main() {
 
