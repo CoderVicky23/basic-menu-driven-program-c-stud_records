@@ -14,7 +14,10 @@ int createFile(struct STUDENT_RECORD students[], int nos) {
         students[i].add.house_no,
         students[i].add.street,
         students[i].add.city,
-        students[i].add.state);
+        students[i].add.state,
+        students[i].dob.date,
+        students[i].dob.month,
+        students[i].dob.year);
     }
     fclose(file);
     return 0;
