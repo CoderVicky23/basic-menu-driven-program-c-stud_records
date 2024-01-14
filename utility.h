@@ -1,44 +1,47 @@
 // basic functions
 
 // function to enter a value in the array
-int insert_value(struct STUDENT_RECORD students[], int *last_roll) {
-    students[(*last_roll)].roll = *last_roll + 10001;
+int insert_value(struct STUDENT_RECORD students[], int *last_index) {
+    students[(*last_index)].roll = *last_index + 10001;
     fflush(stdin);
     printf("Enter Name:\n");
-    scanf(" %[^\n]s", students[(*last_roll)].name);
+    scanf(" %[^\n]s", students[(*last_index)].name);
     fflush(stdin);
     printf("Enter Marks:\n");
-    scanf("%f", &students[(*last_roll)].marks);
+    scanf(" %f", &students[(*last_index)].marks);
     fflush(stdin);
     printf("Enter Address:\n");
     printf("House No.: ");
-    scanf("%d", &students[(*last_roll)].add.house_no);
+    scanf(" %d", &students[(*last_index)].add.house_no);
     fflush(stdin);
     printf("Street: ");
-    scanf("%s", students[(*last_roll)].add.street);
+    scanf(" %[^\n]s", students[(*last_index)].add.street);
     fflush(stdin);
     printf("City: ");
-    scanf("%s", students[(*last_roll)].add.city);
+    scanf(" %[^\n]s", students[(*last_index)].add.city);
     fflush(stdin);
     printf("State: ");
-    scanf("%s", students[(*last_roll)].add.state);
+    scanf(" %[^\n]s", students[(*last_index)].add.state);
     fflush(stdin);
     printf("Enter DOB (use format for inserting: DD MM YYYY): ");
-    scanf("%d %d %d", &students[(*last_roll)].dob.date, &students[(*last_roll)].dob.month, &students[(*last_roll)].dob.year);  
+    scanf(" %d %d %d", &students[(*last_index)].dob.date, &students[(*last_index)].dob.month, &students[(*last_index)].dob.year);  
     fflush(stdin);
-    (*last_roll)++;
+    (*last_index)++;
 }
 
 // function to display all the values of the array
 int structure_values_display(struct STUDENT_RECORD students[], int *last_roll) {
-    printf("%8s\t%20s\t%8s\t%25s\t%10s", "Roll", "Name", "Marks", "Address", "Date of Birth");
+    printf("value of last roll is %d\n", *last_roll);
+    printf("---------------------------------------------------------------------------------------------------------------\n");
+    printf("|%-8s|%-20s|%-8s|%-50s|%-10s|\n", "Roll", "Name", "Marks", "Address", "Date of Birth");
+    printf("---------------------------------------------------------------------------------------------------------------\n");
     for (int i=0; i<*last_roll; i++) {
-        printf("\n");
-        printf("%8d\t", students[i].roll);
-        printf("%20s\t", students[i].name);
-        printf("%8.2f\t", students[i].marks);
-        printf("%3d %8s %8s %8s\t", students[i].add.house_no, students[i].add.street, students[i].add.city, students[i].add.state);
-        printf("%d-%d-%d", students[i].dob.date, students[i].dob.month, students[i].dob.year);
+        if (students[i].roll == -1) continue;
+        printf(" %8d|", students[i].roll);
+        printf("%20s|", students[i].name);
+        printf("%8.2f|", students[i].marks);
+        printf("  H.no %2d %13s %13s %13s|", students[i].add.house_no, students[i].add.street, students[i].add.city, students[i].add.state);
+        printf("%.2d-%.2d-%4d ", students[i].dob.date, students[i].dob.month, students[i].dob.year);
         printf("\n");
     }
     fflush(stdin);
@@ -98,6 +101,3 @@ int delete_value(struct STUDENT_RECORD students[], int *last_roll) {
     c = getchar();
     return 0;
 }
-
-// function to fetch values from file to structure;
-// int fetchValues()
